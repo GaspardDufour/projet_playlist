@@ -2,7 +2,7 @@ from APIs import SpotifyAPI
 from APIs import DeezerAPI
 def main():
     # Initialisation des API
-    spotify = SpotifyAPI(client_id="9d3257a11f5c41e8a0d012df070fe2c8", client_secret="c23e20af9cb349778c7c4ed81e9523aa")
+    spotify = SpotifyAPI(client_id="client_id", client_secret="client_secret")
     print("SpotifyAPI: True")
     deezer = DeezerAPI()
     print("DeezerAPI: True")
