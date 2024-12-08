@@ -1,17 +1,16 @@
 from APIs import SpotifyAPI
 from APIs import DeezerAPI
-
 def main():
     # Initialisation des API
-    spotify = SpotifyAPI(client_id="your_spotify_client_id", client_secret="your_spotify_client_secret")
+    spotify = SpotifyAPI(client_id="9d3257a11f5c41e8a0d012df070fe2c8", client_secret="c23e20af9cb349778c7c4ed81e9523aa")
     deezer = DeezerAPI()
     
     # Récupération des morceaux d'une playlist Spotify
-    spotify_playlist_id = "37i9dQZF1DXcBWIGoYBM5M"  # Exemple de playlist Spotify
+    spotify_playlist_id = "37i9dQZF1DX0QqahDuqmRY"  # Exemple de playlist Spotify
     spotify_tracks = spotify.get_playlist_tracks(spotify_playlist_id)
 
     # Récupération des morceaux d'une playlist Deezer
-    deezer_playlist_id = "908622995"  # Exemple de playlist Deezer
+    deezer_playlist_id = "12061709851"  # Exemple de playlist Deezer
     deezer_tracks = deezer.get_playlist(deezer_playlist_id)
 
     # Combiner les chansons des deux playlists
@@ -39,8 +38,8 @@ def main():
         print(f"{track['title']} by {track['artist']} from album {track['album']}")
 
     # (Optionnel) Créer une nouvelle playlist sur Spotify ou Deezer
-    create_playlist_on_spotify = True  # Changez à False si vous voulez utiliser Deezer
-    if create_playlist_on_spotify:
+    #create_playlist_on_spotify = True  # Changez à False si vous voulez utiliser Deezer
+    """if create_playlist_on_spotify:
         # Créer une nouvelle playlist sur Spotify
         spotify_playlist_name = "Combined Playlist"
         new_playlist_id = spotify.create_playlist(spotify_playlist_name, description="Playlist combinée de Spotify et Deezer")
@@ -49,6 +48,6 @@ def main():
     else:
         # Créer une nouvelle playlist sur Deezer
         print("Création de playlists sur Deezer non encore implémentée.")
-
+"""
 if __name__ == "__main__":
     main()
