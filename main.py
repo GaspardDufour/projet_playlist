@@ -3,11 +3,14 @@ from APIs import DeezerAPI
 def main():
     # Initialisation des API
     spotify = SpotifyAPI(client_id="9d3257a11f5c41e8a0d012df070fe2c8", client_secret="c23e20af9cb349778c7c4ed81e9523aa")
+    print("SpotifyAPI: True")
     deezer = DeezerAPI()
+    print("DeezerAPI: True")
     
     # Récupération des morceaux d'une playlist Spotify
-    spotify_playlist_id = "37i9dQZF1DX0QqahDuqmRY"  # Exemple de playlist Spotify
+    spotify_playlist_id = "3HANrwfRethvYLFdFH2xAI"  # Exemple de playlist Spotify
     spotify_tracks = spotify.get_playlist_tracks(spotify_playlist_id)
+    print("\nChansons Spotify : ", spotify_tracks)
 
     # Récupération des morceaux d'une playlist Deezer
     deezer_playlist_id = "12061709851"  # Exemple de playlist Deezer

@@ -25,11 +25,26 @@ class SpotifyAPI:
         results = self.spotify.playlist_tracks(playlist_id)
         tracks = []
         for item in results['items']:
-            track = item['track']
+            # Vérification si l'élément contient une clé 'track'
+            track_info = item.get('track')
+            if not track_info:  # Si 'track' est None ou absent, passer à l'élément suivant
+                print(f"Skipping item: {item}")
+                continue
+
+            # Récupération des informations du morceau
+            track_title = track_info.get('name', 'Unknown Title')
+            artists = ', '.join([artist['name'] for artist in track_info.get('artists', [])])
+            album_name = track_info.get('album', {}).get('name', 'Unknown Album')
+
+            # Ajout du morceau au résultat
             tracks.append({
-                'name': track['name'],
-                'artist': track['artists'][0]['name'],
-                'album': track['album']['name'],
-                'id': track['id']
+                "title": track_title,
+                "artist": artists,
+                "album": album_name,
             })
-        return tracks
+
+        # Affichage des résultats
+        for track in tracks:
+            print(f"Title: {track['title']}, Artist: {track['artist']}, Album: {track['album']}")
+        while results:
+            return tracks
