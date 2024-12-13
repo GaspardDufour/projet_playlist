@@ -5,8 +5,13 @@ class DeezerAPI:
 
     def get_playlist(self, playlist_id):
         url = f"{self.BASE_URL}/playlist/{playlist_id}"
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            raise Exception("Failed to fetch playlist from Deezer")
+        response = requests.get(url).json()
+        
+        sons = []
+
+        for track in response['tracks']['data'] :
+            title = track.get('title')
+            artist = track.get('artist', {}).get('name')
+            album = track.get('album', {}).get('title')
+            sons.append({'title' : title, 'artist' : artist, 'album' : album})
+        return sons

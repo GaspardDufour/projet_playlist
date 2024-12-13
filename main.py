@@ -13,9 +13,15 @@ def main():
     print("\nChansons Spotify : ", spotify_tracks)
 
     # Récupération des morceaux d'une playlist Deezer
+<<<<<<< HEAD
     deezer_playlist_id = "6595014704"  # Exemple de playlist Deezer
     deezer_tracks = deezer.get_playlist(deezer_playlist_id)
     print("\nChansons Deezer : ", deezer_tracks)
+=======
+    deezer_playlist_id = "13117688043"  # Exemple de playlist Deezer
+    deezer_tracks = deezer.get_playlist(deezer_playlist_id)
+    print("\nChansons Deezer :", deezer_tracks)
+>>>>>>> origin/try
 
     # Combiner les chansons des deux playlists
     all_tracks = []
@@ -31,7 +37,11 @@ def main():
     # Ajouter les morceaux de Deezer
     for track in deezer_tracks:
         all_tracks.append({
+<<<<<<< HEAD
             "title": track[""],
+=======
+            "title": track["title"],
+>>>>>>> origin/try
             "artist": track["artist"],
             "album": track["album"]
         })
